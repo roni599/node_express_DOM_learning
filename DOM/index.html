@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="co_main_div" id="co_main_div">
+            <form action="">
+                <div class="form">
+                    <div class="from_input">
+                        <input type="text" name="input" id="input" class="input" placeholder="write something">
+                    </div>
+                    <div class="input_button">
+                        <button type="submit" class="add_something_btn" id="add_something_btn">Add Something</button>
+                    </div>
+                </div>
+            </form>
+            <div class='outputcontent' id="outputcontent">
+
+            </div>
+            <div class="" id="other">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let add_something_btn = document.querySelector('#add_something_btn');
+        let outputcontent = document.querySelector('#outputcontent');
+        let input = document.querySelector('#input');
+        let editDynamicContent = null;
+
+        add_something_btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            let input_value = input.value;
+            if (input_value) {
+                if (editDynamicContent) {
+                    editDynamicContent.querySelector('.input_text').textContent = input_value;
+                    editDynamicContent = null;
+                    input.value = '';
+                }
+                else {
+                    let dynamic_content = document.createElement('div');
+                    dynamic_content.className = 'dynamic_content';
+                    dynamic_content.innerHTML = `
+                    <h4 class='input_text'>${input_value}</h4>
+                    <div class="icon_div" id="icon_div">
+                    <i class="fas fa-edit edit_btn"></i>
+                    <i class="fas fa-trash delete_btn"></i>
+                    </div>
+                    `;
+
+                    outputcontent.appendChild(dynamic_content);
+
+                    let allDynamicContent = Array.from(outputcontent.querySelectorAll('.dynamic_content'));
+
+                    allDynamicContent.sort((a, b) => {
+                        let TextA = a.querySelector('.input_text').textContent.toLowerCase();
+                        let TextB = b.querySelector('.input_text').textContent.toLowerCase();
+                        return TextA.localeCompare(TextB);
+                    });
+
+                    outputcontent.innerHTML = '';
+
+                    allDynamicContent.forEach((element) => {
+                        outputcontent.appendChild(element);
+                    })
+
+                    input.value = '';
+                }
+            }
+            else {
+                alert('Empty value is not allwoed');
+            }
+        })
+
+        outputcontent.addEventListener('click', function (event) {
+            if (event.target.classList.contains('delete_btn')) {
+                let dynamicContent = event.target.parentNode.parentNode;
+                dynamicContent.parentNode.removeChild(dynamicContent);
+            }
+            if (event.target.classList.contains('edit_btn')) {
+                const edit_value = event.target.parentNode.previousElementSibling.textContent;
+                input.value = edit_value;
+                editDynamicContent = event.target.parentNode.parentNode;
+            }
+        })
+    })
+</script>
+
+<!-- <script>
+    $(document).ready(function () {
+        $('#add_something_btn').on('click', function (e) {
+            e.preventDefault();
+            let input_value = $('#input').val();
+            if (input_value) {
+                let outputcontent = $('#outputcontent');
+                outputcontent.append(`
+                <div class='dynamic_content'>
+                <p class='input_text' id='input_text'>${input_value}</p>
+                <button class='delete_btn' id='delete_btn'><i class="fas fa-trash"></i></button>
+                </div>`);
+                $('#input').val('');
+            }
+            else{
+                alert('Empty value Not alowed');
+            }
+
+        })
+        $(document).ready(function () {
+            $('.outputcontent').on('click', '.delete_btn', function () {
+                let parentToAppend = $(this).closest('.dynamic_content').clone();
+                let removedElement = $(this).closest('.dynamic_content');
+                parentToAppend.removeClass('dynamic_content');
+                $('#other').append(parentToAppend);
+                removedElement.remove();
+            });
+        });
+    })
+</script> -->
+
+</html>
