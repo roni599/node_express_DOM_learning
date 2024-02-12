@@ -1,35 +1,17 @@
-// const http=require('http');
-// const port=3000;
-// const hostName='127.0.0.1';
+const http=require('http');
+const PORT=3000;
+const hostName='127.0.0.1';
+
 // const myServer=http.createServer((req,res)=>{
-//     res.end('<h1>this is my first server</h1>');
+//     res.end('<h1>This is my first server</h1>');
+// }).listen(PORT,hostName,()=>{
+//     console.log(`Server Listint successfully at http://${hostName}:${PORT}`)
 // })
-// myServer.listen(port,hostName,()=>{
-//     console.log(`server is running successfully at http://${hostName}:${port}`)
-// });
 
-
-const http = require('http');
-const port = 3000;
-const hostName = '127.0.0.1';
-const myServer = http.createServer((req, res) => {
-    if (req.url === '/') {
-        res.write('This is the Home page')
-        res.end();
-    }
-    else if (req.url === '/about') {
-        res.write('This is about page');
-        res.end();
-    }
-    else if (req.url === '/contact') {
-        res.write('This is the contact page');
-        res.end();
-    }
-    else {
-        res.write('Not Found')
-        res.end();
-    }
+const myServer=http.createServer((req,res)=>{
+    res.end('<h1>This is my first Server</h1>');
 });
-myServer.listen(port, hostName, () => {
-    console.log(`Server is runnig successfully at http://${hostName}:${port}`);
+
+myServer.listen(PORT,hostName,()=>{
+    console.log(`Server Listing successfully at http://${hostName}:${PORT}`);
 })

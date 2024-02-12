@@ -1,11 +1,11 @@
 const getName=()=>{
     return 'ekRoni';
 }
-const getAge=()=>{
-    return '25';
-}
 
-exports.cgpa=25;
+const getAge=()=>{
+    return '24';
+}
+exports.cgpa='3.50';
 
 // exports.getName=getName;
 // exports.getAge=getAge;

@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "movies-names": "^1.1.1",
-    "random-fruits-name": "^1.10.0",
-    "random-movie-names": "^1.0.2"
+    "random-fruits-name": "^1.10.0"
   }
 }

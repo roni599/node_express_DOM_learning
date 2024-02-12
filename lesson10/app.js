@@ -6,5 +6,5 @@ const hostName='127.0.0.1';
 module.exports={
     app,
     PORT,
-    hostName,
+    hostName
 }

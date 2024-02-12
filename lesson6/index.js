@@ -1,8 +1,5 @@
-// const getRandomFruitsName=require('random-fruits-name');
-// console.log(getRandomFruitsName('bn', { maxWords: 1 }));
+const randomFruitsName=require('random-fruits-name');
+console.log(randomFruitsName('en', { maxWords: 2 }));
 
-// const movie=require('random-movie-names');
-// console.log(movie(5));
-
-// const movie=require('movies-names');
-// console.log(movie.random(5));
+var moviesNames = require('movies-names');
+console.log(moviesNames.random(4))

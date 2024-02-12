@@ -1,28 +1,29 @@
-const fs = require('fs');
-// fs.writeFile('demo1.txt','i am ekRoni',(err)=>{
+const fs=require('fs');
+
+fs.writeFile('demo1.txt','i am ekRoni',(err)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        console.log('Successfully');
+    }
+})
+
+// fs.readFile('demo1.txt','utf-8',(err,data)=>{
 //     if(err){
 //         console.log(err);
 //     }
 //     else{
-//         console.log('success');
+//         console.log(data)
 //     }
 // })
 
-// fs.appendFile('demo1.txt', '. Now i am in jashore', (err) => {
-//     if (err) {
-//         console.log(err);
-//     }
-//     else {
-//         console.log('success');
-//     }
-// })
-
-// fs.readFile('demo2.txt','utf-8',(err,data)=>{
+// fs.appendFile('demo1.txt','. now i am in jashore',(err)=>{
 //     if(err){
 //         console.log(err)
 //     }
 //     else{
-//         console.log(data)
+//         console.log('Successfully');
 //     }
 // })
 
@@ -31,27 +32,24 @@ const fs = require('fs');
 //         console.log(err)
 //     }
 //     else{
-//         console.log('success')
+//         console.log(`Successfully`);
+//     }
+// })
+
+// fs.exists('demo2.txt',(result)=>{
+//     if(result){
+//         console.log('found');
+//     }
+//     else{
+//         console.log('Not found');
 //     }
 // })
 
 // fs.unlink('demo2.txt',(err)=>{
 //     if(err){
-//         console.log(err);
+//         console.log(err)
 //     }
 //     else{
-//         console.log('success');
+//         console.log('successfully');
 //     }
 // })
-
-
-// fs.existsSync('demo3.txt',(result)=>{
-//     if(result){
-//         console.log('found');
-//     }
-//     else{
-//         console.log('not found')
-//     }
-// })
-// console.log('hello');
-const read=fs.readFileSync('demo2.txt');
